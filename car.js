@@ -1,3 +1,11 @@
+const vehicleColors = [
+  0xa52523,
+  0xef2d56,
+  0x0ad3ff,
+  0xff9f1c /*0xa52523, 0xbdb638, 0x78b14b*/
+];
+
+
 function Car() {
   const car = new THREE.Group();
 
@@ -17,7 +25,7 @@ function Car() {
 
   const main = new THREE.Mesh(
     new THREE.BoxBufferGeometry(60,30,15),
-    new THREE.MeshLambertMaterial({color: 0xa52523})
+    new THREE.MeshLambertMaterial({color: pickRandom(vehicleColors)})
   );
 
   main.position.z = 12;
@@ -42,4 +50,8 @@ function Wheel() {
   );
   wheel.position.z = 6;
   return wheel;
+}
+
+function pickRandom(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
